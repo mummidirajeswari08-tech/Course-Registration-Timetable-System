@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Flow - Project Presentation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-content { display: none; }
+        .slide-content.active { display: block; }
+        
+        /* Toast notification animation */
+        #alertToast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900/90 border-b border-slate-800 px-6 py-4 flex flex-wrap justify-between items-center sticky top-0 z-50 backdrop-blur">
+        <div class="flex items-center space-x-3">
+            <div class="bg-indigo-600 text-white p-2 rounded-xl font-bold shadow-lg shadow-indigo-600/30">
+                <i class="fa-solid fa-graduation-cap text-xl"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg text-white">Academic Flow</h1>
+                <p class="text-xs text-slate-400">Course Registration & Timetable Engine</p>
+            </div>
+        </div>
+
+        <!-- Slide Indicators / Navbar Links -->
+        <nav class="hidden md:flex space-x-1 bg-slate-950 p-1.5 rounded-xl border border-slate-800 text-xs font-semibold">
+            <button onclick="goToSlide(0)" class="nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">1. Homepage</button>
+            <button onclick="goToSlide(1)" class="nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">2. Subjects Used</button>
+            <button onclick="goToSlide(2)" class="nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">3. AI/ML Layer</button>
+            <button onclick="goToSlide(3)" class="nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">4. Timetable UI</button>
+            <button onclick="goToSlide(4)" class="nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition">5. Advisor Panel</button>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition shadow-md shadow-indigo-600/20">
+                <i class="fa-solid fa-play text-xs"></i>
+                <span class="hidden sm:inline">Launch Live App</span>
+            </a>
+            <div class="text-xs font-semibold bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 px-3 py-1.5 rounded-full">
+                Slide <span id="slide-num">1</span> of 5
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Slide Display Area -->
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8">
+        <div class="w-full max-w-5xl">
+
+            <!-- SLIDE 1: HOMEPAGE -->
+            <div class="slide-content active bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        Academic Project Presentation
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white mt-6 mb-4 leading-tight">
+                        Course Registration & <br><span class="text-indigo-400">Timetable System</span>
+                    </h1>
+                    <p class="text-slate-400 text-sm md:text-base mb-8 leading-relaxed">
+                        An integrated college administration suite designed to eliminate timetable collisions, enforce prerequisite Directed Acyclic Graph (DAG) logic, and proactively flag student dropout risks using machine learning.
+                    </p>
+                    
+                    <!-- Quick Feature Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left mt-6">
+                        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl hover:border-emerald-500/50 transition">
+                            <i class="fa-solid fa-shield-halved text-emerald-400 text-xl mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">0% Schedule Clashes</h4>
+                            <p class="text-xs text-slate-400 mt-1">Real-time overlap prevention interval algorithm.</p>
+                        </div>
+                        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl hover:border-indigo-500/50 transition">
+                            <i class="fa-solid fa-diagram-project text-indigo-400 text-xl mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">Prerequisite DAG</h4>
+                            <p class="text-xs text-slate-400 mt-1">Graph theory rule enforcement with cycle checks.</p>
+                        </div>
+                        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl hover:border-rose-500/50 transition">
+                            <i class="fa-solid fa-brain text-rose-400 text-xl mb-2"></i>
+                            <h4 class="font-bold text-sm text-white">AI Dropout Flagging</h4>
+                            <p class="text-xs text-slate-400 mt-1">Python predictive risk scoring & alerts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Navigation CTA -->
+                    <div class="mt-8 flex justify-center space-x-3">
+                        <button onclick="goToSlide(1)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-xl text-xs font-semibold transition flex items-center space-x-2">
+                            <span>Explore Architecture</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-6 py-2.5 rounded-xl text-xs font-semibold transition flex items-center space-x-2">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <span>Open Live Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: SUBJECTS USED -->
+            <div class="slide-content bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="mb-6">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Academic Architecture</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1">Subjects Used & Integration</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- DBMS Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-blue-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="p-2.5 bg-blue-500/10 text-blue-400 rounded-lg"><i class="fa-solid fa-database"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white text-sm">DBMS (Database Management)</h3>
+                                <p class="text-[11px] text-slate-400">Unit 1 & Unit 2 - Relational Schema</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>ER Modeling of Student, Course, Faculty, Sections & Enrollments.</li>
+                            <li>Integrity constraints: Primary keys, Foreign keys, and CHECK rules.</li>
+                            <li>Recursive CTE queries for complete prerequisite tree traversal.</li>
+                        </ul>
+                    </div>
+
+                    <!-- DMGT & ADSA Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-emerald-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-lg"><i class="fa-solid fa-diagram-project"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white text-sm">DMGT & ADSA</h3>
+                                <p class="text-[11px] text-slate-400">Discrete Math & Advanced Data Structures</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>DMGT: Prerequisite propositional logic, relations, and transitivity.</li>
+                            <li>ADSA: Course dependencies modeled as a Directed Acyclic Graph (DAG).</li>
+                            <li>Kahn's Topological Sorting algorithm for graduation curriculum sequence.</li>
+                        </ul>
+                    </div>
+
+                    <!-- OOPJ Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-amber-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="p-2.5 bg-amber-500/10 text-amber-400 rounded-lg"><i class="fa-solid fa-code"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white text-sm">OOPJ (Object Oriented Java)</h3>
+                                <p class="text-[11px] text-slate-400">Registrar Validation Engine</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Validates prerequisite DAGs and detects schedule clashes before enrollment.</li>
+                            <li>3-color DFS cycle detector prevents circular prerequisite deadlocks.</li>
+                            <li>Interval clash checking: <code>(StartA &lt; EndB) &amp;&amp; (StartB &lt; EndA)</code>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Python Analytics Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 hover:border-rose-500/40 transition">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="p-2.5 bg-rose-500/10 text-rose-400 rounded-lg"><i class="fa-brands fa-python"></i></div>
+                            <div>
+                                <h3 class="font-bold text-white text-sm">Python ML Engine</h3>
+                                <p class="text-[11px] text-slate-400">Predictive Student Analytics</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Computes weighted retention score from attendance % and GPA.</li>
+                            <li>Auto-escalates students under 75% attendance or 2.2 GPA to HIGH RISK.</li>
+                            <li>Dispatches automated incident reports and suggested interventions to advisors.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: AIML LAYER -->
+            <div class="slide-content bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="mb-6">
+                    <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Predictive Intelligence</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1">AI/ML Layer & Risk Engine</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- ML Logic Card -->
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-white text-sm mb-3">Python Analysis Criteria</h3>
+                            <div class="space-y-3 text-xs">
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <span class="text-slate-400 block">Attendance Threshold</span>
+                                    <span class="font-bold text-rose-400">&lt; 75% Attendance Rate</span>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <span class="text-slate-400 block">Grade History Trend</span>
+                                    <span class="font-bold text-amber-400">GPA &lt; 2.20 (Probation Risk)</span>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <span class="text-slate-400 block">Weighted Empirical Model</span>
+                                    <span class="font-bold text-indigo-400">55% Attendance + 45% GPA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg text-xs text-rose-300">
+                            <strong>Database Write:</strong> Sets <code>risk_flag = 'HIGH'</code> and triggers alert memo.
+                        </div>
+                    </div>
+
+                    <!-- Risk Visualizer -->
+                    <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl md:col-span-2 flex flex-col justify-between">
+                        <h3 class="font-bold text-white text-sm mb-3">Live Risk Score Metrics</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                <div class="flex justify-between text-xs mb-1.5">
+                                    <span class="text-slate-300 font-semibold">Student ID: #STU-1001 (Alex Johnson)</span>
+                                    <span class="text-rose-400 font-bold">High Risk (68% Att | 2.3 GPA)</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-rose-500 h-full rounded-full transition-all duration-1000" style="width: 78%"></div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                <div class="flex justify-between text-xs mb-1.5">
+                                    <span class="text-slate-300 font-semibold">Student ID: #STU-1002 (Sophia Davis)</span>
+                                    <span class="text-emerald-400 font-bold">Low Risk (96.5% Att | 3.85 GPA)</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 15%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs">
+                            <div class="p-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-lg font-medium">
+                                Safe Zone (&lt;25)
+                            </div>
+                            <div class="p-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-lg font-medium">
+                                Monitor (25-50)
+                            </div>
+                            <div class="p-2 bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-lg font-medium">
+                                Flag Advisor (&gt;50)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: TIMETABLE UI & REGISTRATION MODULE -->
+            <div class="slide-content bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="mb-4 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Interactive UI</span>
+                        <h2 class="text-2xl font-bold text-white mt-1">Registration & Clash Engine</h2>
+                    </div>
+                    <div class="text-xs bg-amber-500/10 border border-amber-500/30 text-amber-300 px-3 py-1.5 rounded-lg flex items-center">
+                        <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Java Collision Check Active
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Course Picker -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase mb-3">Available Courses</h3>
+                        <div class="space-y-2">
+                            <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="text-xs font-bold text-indigo-400">CS201 - Data Structures</div>
+                                    <div class="text-[10px] text-slate-400">Mon 10:00 - 11:30 AM</div>
+                                </div>
+                                <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> Enrolled</span>
+                            </div>
+                            <div class="p-3 bg-slate-900 border border-amber-500/40 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="text-xs font-bold text-amber-400">MATH101 - Discrete Math</div>
+                                    <div class="text-[10px] text-slate-400">Mon 10:00 - 11:30 AM</div>
+                                </div>
+                                <span class="text-xs text-amber-400 font-semibold"><i class="fa-solid fa-triangle-exclamation"></i> Overlap</span>
+                            </div>
+                            <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-400">CS301 - Advanced Algo</div>
+                                    <div class="text-[10px] text-slate-400">Requires CS201 Completed</div>
+                                </div>
+                                <span class="text-xs text-rose-400 font-semibold"><i class="fa-solid fa-lock"></i> DAG Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timetable View -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 md:col-span-2">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase mb-3">Weekly Schedule Matrix</h3>
+                        <div class="grid grid-cols-5 gap-2 text-center text-xs font-bold text-slate-400 mb-2">
+                            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 text-xs">
+                            <div class="bg-indigo-600/20 border border-indigo-500 text-indigo-300 p-2 rounded-lg text-center">
+                                <strong>CS201</strong><br><span class="text-[10px]">10:00 AM</span>
+                            </div>
+                            <div class="bg-slate-900 border border-slate-800 p-2 rounded-lg text-center text-slate-600">Empty</div>
+                            <div class="bg-indigo-600/20 border border-indigo-500 text-indigo-300 p-2 rounded-lg text-center">
+                                <strong>CS350</strong><br><span class="text-[10px]">02:00 PM</span>
+                            </div>
+                            <div class="bg-purple-600/20 border border-purple-500 text-purple-300 p-2 rounded-lg text-center">
+                                <strong>MATH201</strong><br><span class="text-[10px]">01:00 PM</span>
+                            </div>
+                            <div class="bg-emerald-600/20 border border-emerald-500 text-emerald-300 p-2 rounded-lg text-center">
+                                <strong>ENG102</strong><br><span class="text-[10px]">11:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs text-amber-300 flex items-center justify-between">
+                            <span><i class="fa-solid fa-circle-exclamation mr-1"></i> Timetable Clash Warning: MATH101 conflicts with CS201 on Monday 10:00 AM.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: ADVISOR PANEL -->
+            <div class="slide-content bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+                <div class="mb-6">
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Faculty Access</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mt-1">Academic Advisor Panel</h2>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
+                    <div class="p-4 bg-slate-900 border-b border-slate-800 flex justify-between items-center">
+                        <h3 class="text-sm font-bold text-white">Students Flagged by Python AI Engine</h3>
+                        <span class="bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            2 Active Alerts
+                        </span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-900 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Student</th>
+                                    <th class="p-3">Attendance</th>
+                                    <th class="p-3">Prerequisites</th>
+                                    <th class="p-3">DB Status</th>
+                                    <th class="p-3 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Alex Johnson (#STU-1001)</td>
+                                    <td class="p-3 text-rose-400 font-bold">68%</td>
+                                    <td class="p-3 text-emerald-400"><i class="fa-solid fa-check"></i> Passed CS101</td>
+                                    <td class="p-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">risk_flag = HIGH</span></td>
+                                    <td class="p-3 text-right"><button onclick="sendAlert('Alex Johnson', 'STU-1001')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded text-[11px] transition font-semibold">Send Alert</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-white">Marcus Chen (#STU-1003)</td>
+                                    <td class="p-3 text-amber-400 font-bold">72%</td>
+                                    <td class="p-3 text-rose-400"><i class="fa-solid fa-xmark"></i> Failed DAG</td>
+                                    <td class="p-3"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">risk_flag = HIGH</span></td>
+                                    <td class="p-3 text-right"><button onclick="sendAlert('Marcus Chen', 'STU-1003')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded text-[11px] transition font-semibold">Send Alert</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Slide Navigation Controls -->
+    <footer class="bg-slate-900 border-t border-slate-800 px-6 py-4 flex justify-between items-center">
+        <button id="prev-btn" onclick="changeSlide(-1)" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-xl text-xs font-semibold transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center">
+            <i class="fa-solid fa-chevron-left mr-2"></i> Previous
+        </button>
+
+        <div class="flex items-center space-x-3">
+            <span class="text-[11px] text-slate-500 hidden sm:inline">Use <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded border border-slate-700 text-slate-300">→</kbd> keys</span>
+            <div id="dots-container" class="flex space-x-2"></div>
+        </div>
+
+        <button id="next-btn" onclick="changeSlide(1)" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-xl text-xs font-semibold transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center">
+            Next <i class="fa-solid fa-chevron-right ml-2"></i>
+        </button>
+    </footer>
+
+    <!-- Toast Notification Box -->
+    <div id="alertToast" class="fixed bottom-20 right-6 bg-slate-900 border border-indigo-500 text-white text-xs px-4 py-3 rounded-xl shadow-2xl hidden opacity-0 translate-y-2 z-50 flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMessage">Advisory notification dispatched!</span>
+    </div>
+
+    <!-- JavaScript Controller -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-content');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const slideNumDisplay = document.getElementById('slide-num');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('dots-container');
+        const alertToast = document.getElementById('alertToast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        // Generate Dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = `w-2.5 h-2.5 rounded-full transition ${i === 0 ? 'bg-indigo-500 w-6' : 'bg-slate-700'}`;
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateView() {
+            slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+            
+            navTabs.forEach((tab, idx) => {
+                if (idx === currentSlide) {
+                    tab.className = 'nav-tab px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-bold transition';
+                } else {
+                    tab.className = 'nav-tab px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition';
+                }
+            });
+
+            Array.from(dotsContainer.children).forEach((dot, idx) => {
+                dot.className = idx === currentSlide 
+                    ? 'w-6 h-2.5 bg-indigo-500 rounded-full transition' 
+                    : 'w-2.5 h-2.5 bg-slate-700 rounded-full transition';
+            });
+
+            slideNumDisplay.textContent = currentSlide + 1;
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(dir) {
+            currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide + dir));
+            updateView();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateView();
+        }
+
+        // Keyboard Arrow Key Support
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Send Alert Interaction Handler
+        function sendAlert(studentName, studentId) {
+            toastMessage.innerHTML = `Dispatched retention intervention alert for <strong>${studentName} (${studentId})</strong> to Academic Success Center!`;
+            alertToast.classList.remove('hidden');
+            setTimeout(() => {
+                alertToast.classList.remove('opacity-0', 'translate-y-2');
+            }, 10);
+
+            setTimeout(() => {
+                alertToast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => alertToast.classList.add('hidden'), 300);
+            }, 3500);
+        }
+
+        updateView();
+    </script>
+</body>
+</html>
