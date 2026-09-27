@@ -237,8 +237,13 @@ if __name__ == "__main__":
             completed_credits=28
         )
     ]
+analyzer = StudentRiskAnalyzer()
+batch_results = analyzer.batch_assess(sample_students)
 
-  
+summary_export = [r.to_dict() for r in batch_results]
+
 st.title("Student Risk Analytics Engine")
 st.write("Running Student Risk Analytics Engine...")
 st.json(summary_export)
+  
+
