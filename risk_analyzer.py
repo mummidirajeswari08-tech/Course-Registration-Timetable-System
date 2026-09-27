@@ -9,7 +9,7 @@ Description:
   and automatically dispatches academic advisor alerts for high-risk students.
 ===============================================================================
 """
-
+import streamlit as st
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
@@ -238,10 +238,6 @@ if __name__ == "__main__":
         )
     ]
 
-    print("Running Student Risk Analytics Engine...")
-    batch_results = analyzer.batch_assess(sample_students)
-
-    # Export sample assessment summary as JSON for downstream integrations
-    summary_export = [r.to_dict() for r in batch_results]
-    print("\n[EXPORT SAMPLE JSON PAYLOAD]")
-    print(json.dumps(summary_export[0], indent=2))
+   st.title("Student Risk Analytics Engine")
+st.write("Running Student Risk Analytics Engine...")
+st.json(summary_export)
