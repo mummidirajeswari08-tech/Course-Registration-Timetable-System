@@ -238,6 +238,7 @@ if __name__ == "__main__":
         )
     ]
 
-   st.title("Student Risk Analytics Engine")
+  
+st.title("Student Risk Analytics Engine")
 st.write("Running Student Risk Analytics Engine...")
 st.json(summary_export)
