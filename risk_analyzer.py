@@ -239,11 +239,37 @@ if __name__ == "__main__":
     ]
 analyzer = StudentRiskAnalyzer()
 batch_results = analyzer.batch_assess(sample_students)
-
 summary_export = [r.to_dict() for r in batch_results]
 
-st.title("Student Risk Analytics Engine")
-st.write("Running Student Risk Analytics Engine...")
+# Title and Header
+st.title("🎓 Student Risk Analytics Engine")
+st.markdown("---")
+
+# Data preparation
+import pandas as pd
+df = pd.DataFrame(summary_export)
+
+# Top Summary Metrics
+col1, col2, col3 = st.columns(3)
+col1.metric("Total Students Assessed", len(df))
+col2.metric("High Risk Students", len(df[df['risk_category'] == 'HIGH RISK']))
+col3.metric("Alerts Triggered", len(df[df['alert_triggered'] == True]))
+
+st.markdown("### 📊 Assessment Summary Table")
+
+# Interactive Search & Filter
+search_term = st.text_input("🔍 Search Student Name or ID:", "")
+if search_term:
+    df = df[df['name'].str.contains(search_term, case=False) | df['student_id'].str.contains(search_term, case=False)]
+
+# Display Table
+st.dataframe(
+    df[['student_id', 'name', 'attendance_pct', 'gpa', 'risk_score', 'risk_category', 'alert_triggered']],
+    use_container_width=True
+)
+
+st.markdown("### 📁 Detailed Breakdown")
 st.json(summary_export)
-  
+
+
 
